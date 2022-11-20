@@ -45,9 +45,8 @@ function createCard(card) {
     languages.push(card.languages[key]);
   }
 
-  return `<h2><img src="${card.flags.svg}" alt="${
-    card.name.official
-  }" width="36">
+  return `<h2>
+  <img src="${card.flags.svg}" alt="${card.name.official}" width="36">
   ${card.name.official}</h2>
   <p><b>Capital:</b> ${card.capital}</p>
   <p><b>Population:</b> ${card.population}</p>
