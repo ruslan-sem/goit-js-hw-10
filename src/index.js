@@ -25,12 +25,24 @@ function onInput(event) {
           'Too many matches found. Please enter a more specific name.'
         );
       } else if (data.length >= 2 && data.length <= 10) {
-        Notiflix.Notify.warning('From 2 to 10');
+        // Notiflix.Notify.warning('From 2 to 10');
+        country.innerHTML = '';
+        list.innerHTML = createList(data);
       } else if (data.length === 1) {
-        Notiflix.Notify.success('OK. 1');
+        // Notiflix.Notify.success('OK. 1');
+        list.innerHTML = '';
+        country.innerHTML = createCard(data[0]);
       }
     })
     .catch(err => {
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
+}
+
+function createCard(card) {
+  return `<h2>${card.name.official}</h2>`;
+}
+
+function createList(cardarr) {
+  return cardarr.map(el => `<li>${el.name.official}</li>`).join('');
 }
