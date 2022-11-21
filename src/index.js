@@ -44,13 +44,14 @@ function createCard(card) {
   for (key in card.languages) {
     languages.push(card.languages[key]);
   }
+  const lngstr = languages.join(', ');
 
   return `<h2>
   <img src="${card.flags.svg}" alt="${card.name.official}" width="36">
   ${card.name.official}</h2>
   <p><b>Capital:</b> ${card.capital}</p>
   <p><b>Population:</b> ${card.population}</p>
-  <p><b>Languages:</b> ${languages.join(', ')}</p>`;
+  <p><b>Languages:</b> ${lngstr}</p>`;
 }
 
 function createList(cardarr) {
