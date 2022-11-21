@@ -25,15 +25,12 @@ function onInput(event) {
           'Too many matches found. Please enter a more specific name.'
         );
       } else if (data.length >= 2 && data.length <= 10) {
-        // Notiflix.Notify.warning('From 2 to 10');
         country.innerHTML = '';
         list.innerHTML = createMarkupList(data);
       } else if (data.length === 1) {
-        // Notiflix.Notify.success('OK. 1');
-        // console.log(data);
         list.innerHTML = '';
         console.log('after list');
-        // country.innerHTML = createMarkupCard(data);
+        country.innerHTML = createMarkupCard(data[0]);
         console.log('after country');
       }
     })
