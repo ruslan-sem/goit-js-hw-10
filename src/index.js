@@ -29,9 +29,7 @@ function onInput(event) {
         list.innerHTML = createMarkupList(data);
       } else if (data.length === 1) {
         list.innerHTML = '';
-        console.log('after list');
         country.innerHTML = createMarkupCard(data[0]);
-        console.log('after country');
       }
     })
     .catch(err => {
