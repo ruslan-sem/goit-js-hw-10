@@ -32,7 +32,9 @@ function onInput(event) {
         // Notiflix.Notify.success('OK. 1');
         console.log(data[0]);
         list.innerHTML = '';
+        console.log('after list');
         country.innerHTML = createMarkupCard(data[0]);
+        console.log('after country');
       }
     })
     .catch(err => {
