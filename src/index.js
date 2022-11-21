@@ -27,7 +27,7 @@ function onInput(event) {
       } else if (data.length >= 2 && data.length <= 10) {
         country.innerHTML = '';
         list.innerHTML = createMarkupList(data);
-      } else {
+      } else if (data.length === 1) {
         list.innerHTML = '';
         country.innerHTML = createMarkupCard(data[0]);
       }
