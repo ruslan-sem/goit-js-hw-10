@@ -40,18 +40,17 @@ function onInput(event) {
 }
 
 function createCard(card) {
-  const languages = [];
+  const lng = [];
   for (key in card.languages) {
-    languages.push(card.languages[key]);
+    lng.push(card.languages[key]);
   }
-  const lngstr = languages.join(', ');
 
   return `<h2>
   <img src="${card.flags.svg}" alt="${card.name.official}" width="36">
   ${card.name.official}</h2>
-  <p><b>Capital:</b> ${card.capital}</p>
+  <p><b>Capital:</b> ${card.capital[0]}</p>
   <p><b>Population:</b> ${card.population}</p>
-  <p><b>Languages:</b> ${lngstr}</p>`;
+  <p><b>Languages:</b> ${lng.join(', ')}</p>`;
 }
 
 function createList(cardarr) {
