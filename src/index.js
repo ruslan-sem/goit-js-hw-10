@@ -40,7 +40,7 @@ function onInput(event) {
 }
 
 function createCard(card) {
-  const lng = [];
+  let lng = [];
   for (key in card.languages) {
     lng.push(card.languages[key]);
   }
