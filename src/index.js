@@ -30,7 +30,7 @@ function onInput(event) {
         list.innerHTML = createMarkupList(data);
       } else if (data.length === 1) {
         // Notiflix.Notify.success('OK. 1');
-        console.log(data[0]);
+        console.log(data);
         country.innerHTML = createMarkupCard(data[0]);
         console.log('after country');
         list.innerHTML = '';
