@@ -33,7 +33,7 @@ function onInput(event) {
         // console.log(data);
         list.innerHTML = '';
         console.log('after list');
-        country.innerHTML = createMarkupCard(data[0]);
+        // country.innerHTML = createMarkupCard(data);
         console.log('after country');
       }
     })
