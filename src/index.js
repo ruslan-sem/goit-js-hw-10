@@ -18,24 +18,28 @@ function onInput(event) {
     country.innerHTML = '';
     return;
   }
-  fetchCountries(query).then(data => {
-    if (data.length > 10) {
-      Notiflix.Notify.info(
-        'Too many matches found. Please enter a more specific name.'
-      );
-    } else if (data.length >= 2 && data.length <= 10) {
-      // Notiflix.Notify.warning('From 2 to 10');
-      country.innerHTML = '';
-      list.innerHTML = createList(data);
-    } else if (data.length === 1) {
-      // Notiflix.Notify.success('OK. 1');
-      list.innerHTML = '';
-      country.innerHTML = createCard(data[0]);
-    }
-  });
+  fetchCountries(query)
+    .then(data => {
+      if (data.length > 10) {
+        Notiflix.Notify.info(
+          'Too many matches found. Please enter a more specific name.'
+        );
+      } else if (data.length >= 2 && data.length <= 10) {
+        // Notiflix.Notify.warning('From 2 to 10');
+        country.innerHTML = '';
+        list.innerHTML = createMarkupList(data);
+      } else if (data.length === 1) {
+        // Notiflix.Notify.success('OK. 1');
+        list.innerHTML = '';
+        country.innerHTML = createMarkupCard(data[0]);
+      }
+    })
+    .catch(err => {
+      Notiflix.Notify.failure('Oops, there is no country with that name');
+    });
 }
 
-function createCard(card) {
+function createMarkupCard(card) {
   const lng = [];
   for (key in card.languages) {
     lng.push(card.languages[key]);
@@ -51,7 +55,7 @@ function createCard(card) {
   <p><b>Languages:</b> ${lngstr}</p>`;
 }
 
-function createList(cardarr) {
+function createMarkupList(cardarr) {
   return cardarr
     .map(
       el =>
