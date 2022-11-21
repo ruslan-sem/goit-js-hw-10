@@ -45,6 +45,13 @@ function createCard(card) {
     lng.push(card.languages[key]);
   }
   const lngstr = lng.join(', ');
+  console.log(
+    card.flags.svg,
+    card.name.official,
+    card.capital[0],
+    card.population,
+    lngstr
+  );
 
   return `<h2>
   <img src="${card.flags.svg}" alt="${card.name.official}" width="36">
