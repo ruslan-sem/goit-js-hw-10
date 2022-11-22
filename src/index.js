@@ -35,6 +35,8 @@ function onInput(event) {
       }
     })
     .catch(err => {
+      console.log(err);
+      console.dir(err);
       list.innerHTML = '';
       country.innerHTML = '';
       Notiflix.Notify.failure('Oops, there is no country with that name');
