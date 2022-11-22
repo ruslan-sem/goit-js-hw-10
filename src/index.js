@@ -21,6 +21,8 @@ function onInput(event) {
   fetchCountries(query)
     .then(data => {
       if (data.length > 10) {
+        list.innerHTML = '';
+        country.innerHTML = '';
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
@@ -33,6 +35,8 @@ function onInput(event) {
       }
     })
     .catch(err => {
+      list.innerHTML = '';
+      country.innerHTML = '';
       Notiflix.Notify.failure('Oops, there is no country with that name');
     });
 }
