@@ -34,9 +34,7 @@ function onInput(event) {
         country.innerHTML = createMarkupCard(data[0]);
       }
     })
-    .catch(err => {
-      console.log(err);
-      console.dir(err);
+    .catch(() => {
       list.innerHTML = '';
       country.innerHTML = '';
       Notiflix.Notify.failure('Oops, there is no country with that name');
