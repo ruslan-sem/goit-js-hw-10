@@ -43,7 +43,7 @@ function onInput(event) {
 
 function createMarkupCard(card) {
   const lng = [];
-  for (key in card.languages) {
+  for (let key in card.languages) {
     lng.push(card.languages[key]);
   }
   const lngstr = lng.join(', ');
