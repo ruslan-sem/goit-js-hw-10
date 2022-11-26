@@ -19,19 +19,23 @@ function onInput(event) {
     return;
   }
   fetchCountries(query)
-    .then(data => {
-      if (data.length > 10) {
+    .then(json => {
+      if (json.length > 10) {
         list.innerHTML = '';
         country.innerHTML = '';
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
-      } else if (data.length >= 2 && data.length <= 10) {
+        return;
+      }
+      if (json.length >= 2 && json.length <= 10) {
         country.innerHTML = '';
-        list.innerHTML = createMarkupList(data);
-      } else if (data.length === 1) {
+        list.innerHTML = createMarkupList(json);
+        return;
+      }
+      if (json.length === 1) {
         list.innerHTML = '';
-        country.innerHTML = createMarkupCard(data[0]);
+        country.innerHTML = createMarkupCard(json);
       }
     })
     .catch(() => {
@@ -43,18 +47,17 @@ function onInput(event) {
 
 function createMarkupCard(card) {
   const lng = [];
-  for (let key in card.languages) {
-    lng.push(card.languages[key]);
+  for (let key in card[0].languages) {
+    lng.push(card[0].languages[key]);
   }
-  const lngstr = lng.join(', ');
 
   return `<h2>
-  <img src="${card.flags.svg}" alt="${card.name.official}" width="36">
-  ${card.name.official}
+  <img src="${card[0].flags.svg}" alt="${card[0].name.official}" width="36">
+  ${card[0].name.official}
   </h2>
-  <p><b>Capital:</b> ${card.capital[0]}</p>
-  <p><b>Population:</b> ${card.population}</p>
-  <p><b>Languages:</b> ${lngstr}</p>`;
+  <p><b>Capital:</b> ${card[0].capital[0]}</p>
+  <p><b>Population:</b> ${card[0].population}</p>
+  <p><b>Languages:</b> ${lng.join(', ')}</p>`;
 }
 
 function createMarkupList(cardarr) {
